@@ -1,0 +1,19 @@
+# generate-certs.ps1 이 shared/.env 의 SSL_* 값으로 다시 씁니다.
+[ req ]
+default_bits       = 2048
+distinguished_name = req_distinguished_name
+prompt             = no
+
+[ req_distinguished_name ]
+C  = KR
+ST = Seoul
+L  = Ilwon
+O  = SamsungHospital
+OU = IT
+CN = SamsungHospital Root CA
+
+[ v3_ca ]
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints       = critical,CA:true
+keyUsage               = critical, digitalSignature, cRLSign, keyCertSign

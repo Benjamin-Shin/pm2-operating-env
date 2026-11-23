@@ -1,0 +1,27 @@
+# generate-certs.ps1 이 shared/.env 의 SSL_* 값으로 다시 씁니다.
+[ req ]
+default_bits       = 2048
+distinguished_name = req_distinguished_name
+req_extensions     = v3_req
+prompt             = no
+
+[ req_distinguished_name ]
+C  = KR
+ST = Seoul
+L  = Ilwon
+O  = SamsungHospital
+OU = IT Department
+CN = localhost
+
+[ v3_req ]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = localhost
+DNS.2 = *.localhost
+IP.1  = 127.0.0.1
+IP.2  = ::1
+IP.3  = 192.148.107.253
+IP.4  = 192.168.122.21
